@@ -28,7 +28,7 @@ This software is part of the *Itpas* post-processing. However, the used method c
 <!-- Details on the particle model and its application can be found (later) at Faust et al. (in Prep.) -->
 
 ### Requirements
-The code is written in python3 as Jupyter Notebook. A copy of the code as python script ([traj-plot.py](traj-plot.py)) is included but will be updated only for the release-versions.
+The code is written in python3 as Jupyter Notebook ([cross-section.ipynb](cross-section.ipynb)). A copy of the code as python script ([cross-section.py](cross-section.py)) is included but will be updated only for the release-versions.
 
 Following packages are used:
 - numpy
@@ -41,4 +41,4 @@ Following packages are used:
 
 
 ### Citation
-Please cite this software as:
+Please cite this software as suggested by Zendo on the right.
