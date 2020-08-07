@@ -1,6 +1,7 @@
 # Trajectory cross-section
 ## Plotting of a cross-section along a trajectory.
 
+
 The script draws a cross-section plot from any variable of an atmospheric model along a given trajectory.
 
 ![](example.png)
@@ -41,4 +42,9 @@ Following packages are used:
 
 
 ### Citation
-Please cite this software as suggested by Zendo on the right.
+Please cite this software as:
+
+Matthias Faust. (2020, August 7). mttfst/trajectory-cross-section: Paper Version (Version v1.0). Zenodo. [http://doi.org/10.5281/zenodo.3975530](http://doi.org/10.5281/zenodo.3975530)
+
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3975530.svg)](https://doi.org/10.5281/zenodo.3975530)
