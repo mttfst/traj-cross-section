@@ -23,7 +23,7 @@ You can find a sample data set to run this code [here](https://doi.org/10.5281/z
 The atmospheric data I use in this project are the output of the weather forecast model *[COSMO](http://www.cosmo-model.org/)*.
 The trajectory data originate from the Lagrangian particle dispersion model *[Itpas](https://zenodo.org/record/3932248)*.
 
-This software is part of the *Itpas* post-processing. However, the used method can be adapted for projects with similar problems.  Input from other atmospheric and trajectory models should work as well, but I did not test this yet.
+This software is part of the *Itpas* post-processing. However, the used method can be adapted for projects with similar problems.  Input from other atmospheric and trajectory models should work as well (whit small adjustments), but I did not test this yet.
 
 <!-- Details on the particle model and its application can be found (later) at Faust et al. (in Prep.) -->
 
