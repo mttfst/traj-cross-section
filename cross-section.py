@@ -4,7 +4,7 @@
 # # Traj cross-section - Plotting of a cross-section along a trajectory
 # ## Used packages
 
-# In[17]:
+# In[8]:
 
 
 import numpy as np
@@ -20,7 +20,7 @@ from mpl_toolkits.axes_grid1.inset_locator import inset_axes, zoomed_inset_axes
 # ## Functions
 # Simple bi-linear interpolation. 
 
-# In[18]:
+# In[9]:
 
 
 def rot2grid(rlon,rlat,rlon_min,rlat_min,dlon,dlat):
@@ -44,19 +44,15 @@ def interpol(x,y,var):
 
 # ## read atmospheric data from NetCDF file
 
-# In[19]:
+# In[10]:
 
 
-f=Dataset('data/z.nc','r')
+f=Dataset('l.nc','r')
 
 rglon = f.variables['rlon'][:]
 rglat = f.variables['rlat'][:]
 gdlon = round(rglon[1]-rglon[0],4)
 gdlat = round(rglat[1]-rglat[0],4)
-
-f.close()
-
-f=Dataset('data/l.nc','r')
 
 times = f.variables['time'][:]
 time_unit=f.variables['time'].units
@@ -67,11 +63,6 @@ pres = f.variables['P'][:]
 qv = f.variables['QV'][:]
 td_2m = f.variables['TD_2M'][:]
 tke = f.variables['TKE'][:]
-
-f.close()
-
-f=Dataset('data/c.nc','r')
-
 hhl = f.variables['HHL'][0,:,0,0]
 
 f.close()
@@ -88,7 +79,7 @@ f.close()
 # In the COSMO-model, the temperature is located on the so-called full levels, in contrast to that the TKE is located on the half levels. This means we have to interpolate the TKE from the half levels to the full levels.  
 # 
 
-# In[20]:
+# In[11]:
 
 
 # init zlev and add one extra level for the 2m values
@@ -124,12 +115,12 @@ tke_fl[:,len(zlevs)-1,:,:]=(tke_fl[:,len(zlevs)-2,:,:]+tke[:,len(zlevs)-1,:,:])/
 
 # ## Read in the trajectory data 
 
-# In[21]:
+# In[12]:
 
 
 # load trajectory data
-mean_traj = np.loadtxt('data/mean_traj.txt')
-stda_traj = np.loadtxt('data/stda_traj.txt')
+mean_traj = np.loadtxt('mean_traj.txt')
+stda_traj = np.loadtxt('stda_traj.txt')
 
 # save the column with the dates
 traj_timestemps = [str(int(mean_traj[i,0])) for i in range(len(mean_traj))]
@@ -145,7 +136,7 @@ stda_traj=np.delete(stda_traj,0,axis=1)
 
 # ## convert time
 
-# In[22]:
+# In[13]:
 
 
 
@@ -179,15 +170,15 @@ for t in traj_timestemps:
     traj_dates.append(date)
     traj_mpl_dates.append(mpl.dates.date2num(date))
 
-#i=0
-#for d in mpl_dates:
-#    print(i,mpl.dates.num2date(d),timestemps[i])
-#    i+=1
+# i=0
+# for d in mpl_dates:
+#     print(i,mpl.dates.num2date(d),timestemps[i])
+#     i+=1
 
 
 # ## define the time range for the plot
 
-# In[23]:
+# In[14]:
 
 
 start_date = '20170531080000'
@@ -199,7 +190,7 @@ end_date   = '20170531230000'
 # I want to start the cross-section plot bevor the trajectory starts, therefore I need to extend the trajectory at the start and at the end. 
 # 
 
-# In[24]:
+# In[15]:
 
 
 # I store the data in individual lists and use the .append function because it is handy. 
@@ -298,7 +289,7 @@ stdzr = np.asarray(stdzr)
 
 # ## interpolate fields to the trajectory
 
-# In[25]:
+# In[16]:
 
 
 # count number of time steps for the cross section
@@ -342,7 +333,7 @@ for t in range(first_time_step,last_time_step+1):
 # ### Emission time 
 # The trajectory I use here is the mean trajectory of a huge set of particle trajectories. I want to add the emission time of these particles in the plot. I simply hardcoded this. 
 
-# In[26]:
+# In[17]:
 
 
 # an array that contains values on the emission times
@@ -358,7 +349,7 @@ emission_time[440:540]=0
 
 # ## plot
 
-# In[27]:
+# In[18]:
 
 
 # original
@@ -424,7 +415,7 @@ plt.savefig('cross.png' ,dpi=500 )
 # ### Nested plot
 # The same plot as before but with a zoom of the bottom-most layer in the upper left corner
 
-# In[28]:
+# In[19]:
 
 
 # nested
